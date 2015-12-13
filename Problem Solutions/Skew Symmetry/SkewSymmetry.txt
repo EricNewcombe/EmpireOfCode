@@ -1,0 +1,35 @@
+Skew Symmetry
+
+Do you know that linear algebra is very useful for the calculation of movement of our forces? So take your pens and algebra books and learn, learn, learn.
+
+In mathematics, particularly in linear algebra, a skew-symmetric matrix(also known as an antisymmetric or antimetric) is a square matrix A whose transpose is also its negative. This means it satisfies the equation A=-AT. If the entry in the i-th row and j-th column is aij, i.e. A=(aij) then the symmetric condition becomes aij=-aji.
+
+You should determine whether the specified square matrix is skew-symmetric or not.
+
+You can find more details on Skew-symmetric matrices on its Wikipedia page.
+
+Input: A square matrix as an array of arrays with integers.
+
+Output: If the matrix is skew-symmetric or not as a boolean.
+
+Example:
+
+isSkewSymmetric([
+    [ 0,  1,  2],
+    [-1,  0,  1],
+    [-2, -1,  0]]) === true
+isSkewSymmetric([
+    [ 0,  1, 2],
+    [-1,  1, 1],
+    [-2, -1, 0]]) === false
+isSkewSymmetric([
+    [ 0,  1, 2],
+    [-1,  0, 1],
+    [-3, -1, 0]]) === false
+Precondition:
+
+A matrix is square and non-empty.
+
+How it is used:
+
+Skew-symmetric matrices can be useful for the cross product, an operation in mathematics used in the calculation of movement of forces. Matrixes are basis for the linear algebra and vector graphics.

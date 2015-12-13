@@ -1,0 +1,77 @@
+Weak Point
+
+For a sniper it's very important to find the weak point in a target. Based on some intel gathered in the field, we've been able to construct a durability map for the enemy armor.
+
+The durability map is represented as a matrix with digits. Each number is the durability measurement for the cell. To find the weakest point we should find the weakest row and column. The weakest point is placed in the intersection of these rows and columns. Row (column) durability is a sum of cell durability in that row (column). You should find coordinates of the weakest point (row, column). The first row (column) is 0th row (column). If a section has several equal weak points, then choose the top left point.
+
+    20  30  22  19  25
+  |---|---|---|-*-|---|
+27| 7 | 2 | 7 | 3 | 8 |
+  |---|---|---|-*-|---|
+23| 2 | 9 | 4 | 1 | 7 |
+  |---|---|---|-*-|---|
+23| 3 | 8 | 6 | 2 | 4 |
+  |---|---|---|-*-|---|
+19* 2 * 5 * 2 **9** 1 *
+  |---|---|---|-*-|---|
+26| 6 | 6 | 5 | 4 | 5 |
+  |---|---|---|-*-|---|
+  
+  Weak point (4, 4)
+
+    20  29  19  19  25
+  |---|---|-*-|-*-|---|
+27| 7 | 2 | 7 | 3 | 8 |
+  |---|---|-*-|-*-|---|
+19* 2 * 8 **1** 1 * 7 *
+  |---|---|-*-|-*-|---|
+23| 3 | 8 | 6 | 2 | 4 |
+  |---|---|-*-|-*-|---|
+19* 2 * 5 * 2 * 9 * 1 *
+  |---|---|-*-|-*-|---|
+26| 6 | 6 | 5 | 4 | 5 |
+  |---|---|-*-|-*-|---|
+
+  Weak point (1, 2)
+Input: A durability map as an array of arrays with integers.
+
+Output: The coordinates of the weak point as an array of integers.
+
+Example:
+
+golf([[7, 2, 7, 2, 8],
+      [2, 9, 4, 1, 7],
+      [3, 8, 6, 2, 4],
+      [2, 5, 2, 9, 1],
+      [6, 6, 5, 4, 5]]) // [3, 3]
+golf([[7, 2, 4, 2, 8],
+      [2, 8, 1, 1, 7],
+      [3, 8, 6, 2, 4],
+      [2, 5, 2, 9, 1],
+      [6, 6, 5, 4, 5]]) // [1, 2]
+Precondition:
+
+0 < len(matrix) <= 10
+all(len(row) == len(matrix) for row in matrix)
+all(all(0 < x < 10 for x in row) for row in matrix)
+Scoring:
+
+In this mission the main goal to make your code as short as possible. The shorter your code, the more points you earn. Your score for this mission is dynamic and directly related to the length of your code.
+
+Scoring in this mission is based on the number of characters used in your code (comment lines are not counted).
+
+Rank1:
+
+Any code length.
+
+Rank2:
+
+Your code should be shorter than 175 characters.
+
+Rank3:
+
+Your code should be shorter than 125 characters.
+
+How it is used:
+
+Matrices (2D array) are an often used data structure and it will be helpful to sharpen your skills with them.
