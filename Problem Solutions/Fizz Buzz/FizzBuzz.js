@@ -1,3 +1,7 @@
+/******************************************
+* Takes in a number returns fizz for multiples of 3, buzz for 
+* multiples of 5 and fizzbuzz for multiples of both
+******************************************/
 function fizzBuzz(number) {
     
     var retString = "";

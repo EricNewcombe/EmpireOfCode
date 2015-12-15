@@ -1,3 +1,8 @@
+/******************************************
+* Takes in an array of the positions of pawns on a chess board. Then loops through them
+* to see how many are safe and returns that number
+******************************************/
+
 function safePawns(pawns) {
     var letters = "abcdefgh".split('');
     var board = [];

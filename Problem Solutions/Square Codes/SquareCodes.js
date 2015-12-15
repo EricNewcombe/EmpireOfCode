@@ -1,3 +1,13 @@
+/******************************************
+* Takes in an array of line coordinates on a grid. It then calculates the number
+* squares that are formed from it
+
+*
+* TODO
+* Account for the nulling of certain points and breaking all lines to that point
+*
+******************************************/
+
 function countSquares() {
     var lines = arguments;
     var numSquares = 0;
@@ -56,11 +66,15 @@ function countSquares() {
     return numSquares;
 }
 
+/******************************************
+* Generates the vertical and horizontal representations of the lines in matrices
+* on the map and returns an array holding them
+******************************************/
 function getMatrices() {
     var lines = arguments[0];
     var dim = getSquareSize(lines);
-    var v = [],
-        h = [];
+    var v = [], // Array that holds all of the vertical sections on the grid
+        h = []; // Array which holds all of the horizontal sections on the grid
     
     // initialize the grids
     for (var i = 0; i < dim; i++ ) {
@@ -78,10 +92,10 @@ function getMatrices() {
     for ( var i = 0; i < lines.length; i++ ) {
         var point = lines[i];
         var row, col;
-        var difference = point[1] - point[0];
+        var difference = point[1] - point[0]; // Calculate the difference to determine if the line is vertical or horizontal
         
+        // If the second number in the array is greater than the first, use the smaller number as reference
         if ( difference < 0 ) {
-            console.log("["+point[0],point[1]+"]");
             difference *= -1;
             row = Math.floor((point[1] - 1) / dim);
             col = Math.floor((point[1] - 1) % dim);
@@ -91,7 +105,6 @@ function getMatrices() {
             col = Math.floor((point[0] - 1) % dim);
         }
         
-        //console.log(row,col, difference);
         
         if ( difference == 1 ) { // Horizontal line
             h[row][col] = 1;
@@ -105,6 +118,9 @@ function getMatrices() {
     return [v,h];
 }
 
+/******************************************
+* Helper function to display a text representation of a matrix
+******************************************/
 function displayMatrix(m) {
     // Function to display a matrix
     for ( var i = 0; i < m.length; i++ ) {
@@ -116,9 +132,14 @@ function displayMatrix(m) {
     }
 }
 
+
+/******************************************
+* Determines if the square should be 4x4 or 5x5 and returns the result
+******************************************/
 function getSquareSize() {
     var lines = arguments[0];
     
+    // If any number is greater than 16 then it must be a 5x5 by default
     for ( var i = 0; i < lines.length; i++ ) {
         if ( lines[i][0] > 16 || lines[i][1] > 16 ) {
             return 5;
