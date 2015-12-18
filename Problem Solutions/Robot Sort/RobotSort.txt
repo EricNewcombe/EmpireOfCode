@@ -1,0 +1,41 @@
+Robot Sort
+
+All of the refined ingots should be sorted by size in each lot while passing by on a conveyor. Because the conveyor is already running, our robots needs to quickly swap neighboring ingots.
+
+You are given the size and initial order of the ingots as an array of numbers. Indexes are their position, values are their sizes. You should order this array from the smallest to the largest in size.
+
+For each action a Robot can swap two neighboring elements. Each action should be represented as a string with two digits - indexes of the swapped elements (ex, "01" - swap 0th and 1st ingots). The result should be represented as a string that contains the sequence of actions separated by commas. If the array does not require sorting, then return an empty string.
+
+And you can swap only N*(N-1)/2 times, where N - is a quantity of ingots.
+
+Initial   6 ============
+position  4   ======== 
+          2     ====
+
+Swap      4   ========
+0 - 1     6 ============ 
+          2     ====
+          
+Swap      4   ========
+1 - 2     2     ==== 
+          6 ============
+          
+Swap      2     ====
+0 - 1     4   ======== 
+          6 ============
+Input: An array of integers.
+
+Output: The sequence of actions as a string.
+
+Example:
+
+swapSort([6, 4, 2]) // "01,12,01"
+swapSort([1, 2, 3, 4, 5]) // ""
+swapSort([1, 2, 3, 5, 3]) // "43"
+Precondition:
+
+1 ≤ |array| ≤ 10
+
+How it is used:
+
+This mission will show you how to work the simplest sorting algorithms. It also models one of the game mechanics in the classic puzzle game "Tetris Attack".
