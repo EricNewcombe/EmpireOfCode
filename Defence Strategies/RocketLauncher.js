@@ -69,4 +69,4 @@ function attackUnit(data) {
 
 searchNextTarget();
 
-whenEnemyInRange().then(countUnitsInSplash);
+client.whenEnemyInRange().then(countUnitsInSplash);
