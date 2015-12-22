@@ -58,20 +58,7 @@ Map.prototype.insertTowers = function () {
         }
 
         // Draw tower range on map
-        for ( var i = 0; i <= 360; i+= 5 ) {
-
-            var radians = i / 180
-            var xOff = Math.cos(radians) * towers[i].firing_range,
-                yOff = Math.sin(radians) * towers[i].firing_range;
-
-            var rangeX = Math.floor(x + xOff),
-                rangeY = Math.floor(y + yOff);
-
-            if ( this.points[rangeY][rangeX] == this.emptySpace ) {
-                this.points[rangeY][rangeX] = "R";
-            }
-
-        }
+        this.fillTowerRange(x,y,towers[i].firing_range);
 
     }
 
@@ -91,7 +78,46 @@ Map.prototype.insertCommandCenter = function () {
             this.points[y + i][x + j] = "C";
         }
     }
+     
+
+}
+
+Map.prototype.fillTowerRange = function ( x, y, radius ) {
+
+    for ( var i = -radius; i < radius; i++ ) {
         
+        if ( y + i < 0 || y + i >= this.height ) { continue; }
+
+        for ( var j = -radius; j < radius; j++ ) {
+
+            // Check if the current point is out of the range of the graph
+            if ( x + j < 20 || x + j >= this.width ) { continue; }
+
+            // Get the distance of the current point from the tower
+            var dist = Math.sqrt( Math.pow( i, 2 ) + Math.pow( j, 2 ) );
+
+            // If the distance of the current point is less than the radius, the point is in the circle
+            if ( dist <= radius ) {
+
+                var p = this.points[y + i][x + j];
+
+                // If the current point is empty space, set its value to 1 and if its already a number
+                // increment it as the point is in the range of multiple towers
+                if ( p == this.emptySpace ) {
+                    this.points[y + i][x + j] = 1;
+                }
+                else if ( p * 1 > 0 ) {
+                    this.points[y + i][x + j] += 1;
+                }
+
+            }
+
+
+
+        }
+
+    }
+
 }
 
 /*
